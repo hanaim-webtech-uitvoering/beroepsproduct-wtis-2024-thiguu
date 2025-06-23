@@ -3,10 +3,10 @@ session_start();
 require_once("db_connectie.php");
 include("navigatie.php");
 // Alleen ingelogde klanten
-if (!isset($_SESSION["username"]) || strtolower($_SESSION["role"]) !== "client") {
-    header("Location: login.php");
-    exit();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
+
 
 // Voeg item toe aan winkelmandje
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["product_name"])) {

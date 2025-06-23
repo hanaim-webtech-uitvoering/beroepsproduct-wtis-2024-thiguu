@@ -28,12 +28,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["update_status"])) {
 // Bestellingen ophalen
 try {
     $stmt = $conn->query("
-        SELECT po.order_id, po.client_name, po.address, po.datetime, po.status,
-               pop.product_name, pop.quantity
-        FROM Pizza_Order po
-        JOIN Pizza_Order_Product pop ON po.order_id = pop.order_id
-        ORDER BY po.datetime DESC, po.order_id
+    SELECT po.order_id, po.client_name, po.address, po.datetime, po.status,
+           pop.product_name, pop.quantity
+    FROM Pizza_Order po
+    JOIN Pizza_Order_Product pop ON po.order_id = pop.order_id
+    ORDER BY po.order_id DESC
     ");
+
 
     $resultaten = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
