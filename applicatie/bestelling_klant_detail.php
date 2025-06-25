@@ -61,6 +61,6 @@ switch ($eerste['status']) {
 <?php endforeach; ?>
 </ul>
 
-<a href="profiel.php">⬅ Terug naar overzicht</a>
+<a href="profiel.php">Terug naar overzicht</a>
 
 <?php endif; ?>

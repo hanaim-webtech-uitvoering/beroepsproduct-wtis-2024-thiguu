@@ -25,7 +25,9 @@ try {
     $fout = "Fout bij ophalen bestellingen: " . $e->getMessage();
 }
 ?>
-
+<!-- css inladen -->
+<link rel="stylesheet" href="style.css">
+<!-- laten zien van bestellingen -->
 <h2>Mijn bestellingen</h2>
 
 <?php if ($fout): ?>

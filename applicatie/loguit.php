@@ -1,7 +1,7 @@
 <?php
 session_start();
-session_unset();   // Verwijder alle sessievariabelen
-session_destroy(); // Beëindig de sessie
+session_unset();   // Verwijderd alle sessievariabelen
+session_destroy(); // Beëindigd de sessie
 
-header("Location: menu.php"); // Terug naar loginpagina
+header("Location: menu.php"); // Redirect naar Menu
 exit();

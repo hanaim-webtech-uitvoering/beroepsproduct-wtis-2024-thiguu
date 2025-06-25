@@ -13,7 +13,7 @@ $adres = "";
 $fout = "";
 $gelukt = false;
 
-// 🔄 Verwijder product
+// Verwijderen van producten
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["verwijder"])) {
     $product = $_POST["verwijder"];
     unset($_SESSION["cart"][$product]);
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["verwijder"])) {
     exit();
 }
 
-// 🔁 Aantal bijwerken
+// Aantallen bijwerken
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["update"])) {
     foreach ($_POST["aantal"] as $product => $value) {
         $waarde = max(1, (int)$value);
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["update"])) {
     exit();
 }
 
-// ✅ Bestelling plaatsen
+//Bestelling plaatsen
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["plaats_bestelling"])) {
     $adres = trim($_POST["adres"]);
     if (empty($cart)) {
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["plaats_bestelling"]))
             $stmt->execute([
                 $_SESSION["username"],
                 $_SESSION["username"],
-                "rdeboer", // placeholder
+                "admin", // placeholder
                 1,
                 $adres
             ]);
@@ -72,7 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["plaats_bestelling"]))
     }
 }
 ?>
-
+<!-- css inladen -->
+<link rel="stylesheet" href="style.css">
 <h2>Winkelmandje</h2>
 
 <?php if ($gelukt): ?>
@@ -87,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["plaats_bestelling"]))
 
 <?php if (empty($_SESSION["cart"])): ?>
     <p>Je winkelmandje is leeg.</p>
-    <a href="menu.php">⬅ Terug naar menu</a>
+    <a href="menu.php">Terug naar menu</a>
 <?php else: ?>
     <form method="post">
     <table border="1" cellpadding="8" cellspacing="0">
@@ -130,12 +131,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["plaats_bestelling"]))
     </form>
 
     <br><br>
-
+<!-- Form voor afleveradres -->
     <form method="post">
         <label>Afleveradres:</label><br>
         <input type="text" name="adres" value="<?= htmlspecialchars($adres) ?>" required style="width:300px;"><br><br>
         <input type="submit" name="plaats_bestelling" value="Bestelling plaatsen">
     </form>
 
-    <br><a href="menu.php">⬅ Verder winkelen</a>
+    <br><a href="menu.php">Verder winkelen</a>
 <?php endif; ?>

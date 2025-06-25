@@ -38,7 +38,7 @@ try {
 
     $resultaten = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Groepeer op order_id
+    // Groeperen bestellingen op order_id
     $bestellingen = [];
     foreach ($resultaten as $rij) {
         $id = $rij['order_id'];
@@ -60,7 +60,8 @@ try {
     die("Fout bij ophalen bestellingen: " . $e->getMessage());
 }
 ?>
-
+<!-- css inladen -->
+<link rel="stylesheet" href="style.css">
 <h2>Bestellingsoverzicht voor personeel</h2>
 
 <?php if ($melding): ?>

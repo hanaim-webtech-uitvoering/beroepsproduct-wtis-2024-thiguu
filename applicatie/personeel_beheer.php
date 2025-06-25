@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("db_connectie.php");
-
+include("navigatie.php");
 // Alleen voor ingelogde personeelsleden
 if (!isset($_SESSION["username"]) || strtolower($_SESSION["role"]) !== "personnel") {
     header("Location: login.php");
@@ -19,6 +19,24 @@ if (!$user || !$user["is_admin"]) {
 }
 
 $fout = "";
+// Verwijder personeelslid
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["verwijder_username"])) {
+    $verwijder = $_POST["verwijder_username"];
+
+    // Voorkom dat admin zichzelf verwijdert
+    if ($verwijder === $_SESSION["username"]) {
+        $fout = "Je kunt jezelf niet verwijderen.";
+    } else {
+        try {
+            $stmt = $conn->prepare("DELETE FROM [User] WHERE username = ? AND role = 'Personnel'");
+            $stmt->execute([$verwijder]);
+            header("Location: personeel_beheer.php");
+            exit();
+        } catch (PDOException $e) {
+            $fout = "Fout bij verwijderen: " . $e->getMessage();
+        }
+    }
+}
 
 // Haal alle personeelsleden op
 try {
@@ -29,7 +47,8 @@ try {
     $fout = "Fout bij ophalen personeelsleden: " . $e->getMessage();
 }
 ?>
-
+<!-- css inladen -->
+<link rel="stylesheet" href="style.css">
 <h2>Overzicht personeelsleden</h2>
 
 <?php if ($fout): ?>
@@ -42,17 +61,24 @@ try {
             <th>Gebruikersnaam</th>
             <th>Voornaam</th>
             <th>Achternaam</th>
+            <th>Verwijderen</th>
         </tr>
         <?php foreach ($gebruikers as $user): ?>
         <tr>
             <td><?= htmlspecialchars($user['username']) ?></td>
             <td><?= htmlspecialchars($user['first_name']) ?></td>
             <td><?= htmlspecialchars($user['last_name']) ?></td>
+            <td>
+                <form method="post" onsubmit="return confirm('Weet je zeker dat je <?= htmlspecialchars($user['username']) ?> wilt verwijderen?');">
+                    <input type="hidden" name="verwijder_username" value="<?= htmlspecialchars($user['username']) ?>">
+                    <button type="submit">Verwijderen</button>
+                </form>
+            </td>
         </tr>
         <?php endforeach; ?>
     </table>
 <?php endif; ?>
 
 <br>
-<a href="registratie_personeel.php">➕ Personeelslid toevoegen</a><br>
-<a href="personeel_bestellingen.php">⬅ Terug naar bestellingen</a>
+<a href="registratie_personeel.php">Personeelslid toevoegen</a><br>
+<a href="personeel_bestellingen.php">Terug naar bestellingen</a>

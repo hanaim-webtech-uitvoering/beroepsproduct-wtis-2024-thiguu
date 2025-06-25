@@ -16,13 +16,13 @@ $stmt->execute([$_SESSION["username"]]);
 $user = $stmt->fetch();
 
 if (!$user || !$user["is_admin"]) {
-    die("❌ Geen toegang – alleen voor beheerders.");
+    die("Geen toegang – alleen voor beheerders.");
 }
 
 $fout = "";
 $melding = "";
 
-// Form verwerken
+// Variabele aanmaken nieuw personeel
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username   = trim($_POST["username"]);
     $password   = trim($_POST["password"]);
@@ -53,7 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-
+<!-- css inladen -->
+<link rel="stylesheet" href="style.css">
+<!-- Form voor het registreren van personeel -->
 <h2>Personeelslid registreren</h2>
 
 <?php if ($fout): ?>
@@ -83,4 +85,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </form>
 
 <br>
-<a href="personeel_beheer.php">⬅ Terug naar personeelsoverzicht</a>
+<a href="personeel_beheer.php">Terug naar personeelsoverzicht</a>

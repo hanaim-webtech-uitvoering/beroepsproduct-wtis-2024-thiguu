@@ -34,7 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-
+<!-- css inladen -->
+<link rel="stylesheet" href="style.css">
+<!-- HTML FORM -->
 <h2>Inloggen</h2>
 <form method="post">
     <label>Gebruikersnaam:</label><br>

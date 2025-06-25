@@ -2,7 +2,7 @@
 require_once("db_connectie.php");
 
 $error = "";
-
+// Aanmaken variabele form
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username   = trim($_POST["username"]);
     $password   = trim($_POST["password"]);
@@ -33,7 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-
+<!-- css inladen -->
+<link rel="stylesheet" href="style.css">
+<!-- Tonen form voor het registreren -->
 <h2>Registreren</h2>
 <form method="post">
     <label>Gebruikersnaam:</label><br>

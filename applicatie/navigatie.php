@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 require_once("db_connectie.php");
 ?>
-
+<!-- css voor een navigatiebalk -->
 <style>
 .navbar {
     background-color: #f2f2f2;
@@ -21,16 +21,16 @@ require_once("db_connectie.php");
 </style>
 
 <div class="navbar">
-    <a href="menu.php">🍕 Menu</a>
-    <a href="privacyverklaring.php">🔐 Privacyverklaring</a>
-
+    <a href="menu.php">Menu</a>
+    <a href="privacyverklaring.php">Privacyverklaring</a>
+<!-- Laten zien van verschillende pagina's met bepaalde rechten -->
     <?php if (isset($_SESSION["username"])): ?>
         <?php if (strtolower($_SESSION["role"]) === "client"): ?>
-            <a href="winkelmandje.php">🛒 Winkelmandje</a>
-            <a href="profiel.php">👤 Mijn bestellingen</a>
-
+            <a href="winkelmandje.php">Winkelmandje</a>
+            <a href="profiel.php">Mijn bestellingen</a>
+            <!-- check of gebruiker personeel is -->
         <?php elseif (strtolower($_SESSION["role"]) === "personnel"): ?>
-            <a href="personeel_bestellingen.php">📦 Bestellingen beheren</a>
+            <a href="personeel_bestellingen.php">Bestellingen beheren</a>
 
             <?php
             // Check of gebruiker admin is
@@ -40,14 +40,14 @@ require_once("db_connectie.php");
             $is_admin = $stmt->fetchColumn();
 
             if ($is_admin): ?>
-                <a href="personeel_beheer.php">⚙️ Personeel beheren</a>
-                <a href="registratie_personeel.php">➕ Personeel toevoegen</a>
+                <a href="personeel_beheer.php">Personeel beheren</a>
+                <a href="registratie_personeel.php">Personeel toevoegen</a>
             <?php endif; ?>
         <?php endif; ?>
 
-        <a href="loguit.php">🚪 Uitloggen (<?= htmlspecialchars($_SESSION["username"]) ?>)</a>
+        <a href="loguit.php">Uitloggen (<?= htmlspecialchars($_SESSION["username"]) ?>)</a>
     <?php else: ?>
-        <a href="login.php">🔐 Inloggen</a>
-        <a href="registratie.php">📝 Registreren</a>
+        <a href="login.php">Inloggen</a>
+        <a href="registratie.php">Registreren</a>
     <?php endif; ?>
 </div>
