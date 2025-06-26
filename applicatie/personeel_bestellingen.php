@@ -2,6 +2,7 @@
 session_start();
 require_once("db_connectie.php");
 include("navigatie.php");
+include("header.php");
 if (!isset($_SESSION["username"]) || strtolower($_SESSION["role"]) !== "personnel") {
     header("Location: login.php");
     exit();
@@ -60,8 +61,7 @@ try {
     die("Fout bij ophalen bestellingen: " . $e->getMessage());
 }
 ?>
-<!-- css inladen -->
-<link rel="stylesheet" href="style.css">
+
 <h2>Bestellingsoverzicht voor personeel</h2>
 
 <?php if ($melding): ?>

@@ -2,6 +2,7 @@
 session_start();
 require_once("db_connectie.php");
 include("navigatie.php");
+include("header.php");
 
 // Sessie starten als die nog niet actief is (al gedaan door session_start bovenaan, dus eigenlijk overbodig hier)
 if (session_status() === PHP_SESSION_NONE) {
@@ -58,7 +59,7 @@ try {
 }
 ?>
 <!-- css inladen -->
-<link rel="stylesheet" href="style.css">
+
 <h2>Menu</h2>
 
 <?php if (!empty($message)): ?>

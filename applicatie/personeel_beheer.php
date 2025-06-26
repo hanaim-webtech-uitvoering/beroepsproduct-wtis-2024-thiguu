@@ -2,6 +2,7 @@
 session_start();
 require_once("db_connectie.php");
 include("navigatie.php");
+include("header.php");
 // Alleen voor ingelogde personeelsleden
 if (!isset($_SESSION["username"]) || strtolower($_SESSION["role"]) !== "personnel") {
     header("Location: login.php");
@@ -47,8 +48,6 @@ try {
     $fout = "Fout bij ophalen personeelsleden: " . $e->getMessage();
 }
 ?>
-<!-- css inladen -->
-<link rel="stylesheet" href="style.css">
 <h2>Overzicht personeelsleden</h2>
 
 <?php if ($fout): ?>

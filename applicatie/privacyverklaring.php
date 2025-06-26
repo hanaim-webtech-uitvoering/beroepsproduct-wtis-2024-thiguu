@@ -1,8 +1,8 @@
 <?php
 include("navigatie.php");
+include("header.php");
 ?>
-<!-- css inladen -->
-<link rel="stylesheet" href="style.css">
+
 <h2>Privacyverklaring Pizzeria Sole Machina</h2>
 
 <p>

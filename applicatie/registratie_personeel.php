@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once("db_connectie.php");
+include("navigatie.php");
+include("header.php");
 
 // Alleen voor ingelogde beheerders
 if (!isset($_SESSION["username"]) || strtolower($_SESSION["role"]) !== "personnel") {
@@ -53,8 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-<!-- css inladen -->
-<link rel="stylesheet" href="style.css">
+
 <!-- Form voor het registreren van personeel -->
 <h2>Personeelslid registreren</h2>
 

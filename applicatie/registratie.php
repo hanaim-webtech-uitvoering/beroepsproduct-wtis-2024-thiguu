@@ -1,6 +1,7 @@
 <?php
 require_once("db_connectie.php");
-
+include("navigatie.php");
+include("header.php");
 $error = "";
 // Aanmaken variabele form
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -33,8 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-<!-- css inladen -->
-<link rel="stylesheet" href="style.css">
+
 <!-- Tonen form voor het registreren -->
 <h2>Registreren</h2>
 <form method="post">

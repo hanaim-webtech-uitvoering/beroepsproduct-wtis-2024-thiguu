@@ -13,7 +13,6 @@ try {
 
     // Zet foutmodus op uitzondering
     $verbinding->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    unset(db_password);
 } catch (PDOException $e) {
     die("Databaseverbinding mislukt: " . $e->getMessage());
 }

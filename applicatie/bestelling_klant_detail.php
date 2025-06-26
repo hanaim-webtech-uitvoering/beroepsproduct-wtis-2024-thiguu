@@ -2,6 +2,7 @@
 session_start();
 require_once("db_connectie.php");
 include("navigatie.php");
+include("header.php");
 // Alleen toegankelijk voor klanten
 if (!isset($_SESSION["username"]) || strtolower($_SESSION["role"]) !== "client") {
     header("Location: login.php");

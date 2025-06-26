@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("db_connectie.php");
-
+include("header.php");
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
