@@ -1,8 +1,7 @@
 <?php
 session_start();
 require_once(__DIR__ . "/includes/db_connectie.php");
-include(__DIR__ . "/includes/navigatie.php");
-include(__DIR__ . "/includes/header.php");
+
 
 if (!isset($_SESSION["username"]) || strtolower($_SESSION["role"]) !== "client") {
     header("Location: login.php");
@@ -73,6 +72,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["plaats_bestelling"]))
         }
     }
 }
+?>
+<?php
+include(__DIR__ . "/includes/header.php");
+include(__DIR__ . "/includes/navigatie.php");
 ?>
 <!-- css inladen -->
 <link rel="stylesheet" href="style.css">

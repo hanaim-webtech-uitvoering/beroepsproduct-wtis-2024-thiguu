@@ -1,8 +1,6 @@
 <?php
 session_start();
 require_once(__DIR__ . "/includes/db_connectie.php");
-include(__DIR__ . "/includes/navigatie.php");
-include(__DIR__ . "/includes/header.php");
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -35,8 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-<!-- css inladen -->
-<link rel="stylesheet" href="style.css">
+<?php
+include(__DIR__ . "/includes/header.php");
+include(__DIR__ . "/includes/navigatie.php");
+?>
 <!-- HTML FORM -->
 <h2>Inloggen</h2>
 <form method="post">

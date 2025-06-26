@@ -1,8 +1,7 @@
 <?php
 session_start();
 require_once(__DIR__ . "/includes/db_connectie.php");
-include(__DIR__ . "/includes/navigatie.php");
-include(__DIR__ . "/includes/header.php");
+
 // Alleen toegankelijk voor klanten
 if (!isset($_SESSION["username"]) || strtolower($_SESSION["role"]) !== "client") {
     header("Location: login.php");
@@ -35,6 +34,10 @@ try {
 }
 ?>
 
+<?php
+include(__DIR__ . "/includes/header.php");
+include(__DIR__ . "/includes/navigatie.php");
+?>
 <h2>Bestelling #<?= htmlspecialchars($order_id) ?> – Details</h2>
 
 <?php if ($fout): ?>

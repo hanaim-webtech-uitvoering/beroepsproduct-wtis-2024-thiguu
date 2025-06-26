@@ -43,4 +43,4 @@ Heb je vragen over deze privacyverklaring? Neem dan contact op met:<br>
 privacy@solemachina.nl
 </p>
 
-<a href="menu.php">⬅ Terug naar het menu</a>
+<a href="menu.php">Terug naar het menu</a>

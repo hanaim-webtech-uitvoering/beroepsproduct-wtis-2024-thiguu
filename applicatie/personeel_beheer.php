@@ -1,8 +1,7 @@
 <?php
 session_start();
 require_once(__DIR__ . "/includes/db_connectie.php");
-include(__DIR__ . "/includes/navigatie.php");
-include(__DIR__ . "/includes/header.php");
+
 // Alleen voor ingelogde personeelsleden
 if (!isset($_SESSION["username"]) || strtolower($_SESSION["role"]) !== "personnel") {
     header("Location: login.php");
@@ -47,6 +46,10 @@ try {
 } catch (PDOException $e) {
     $fout = "Fout bij ophalen personeelsleden: " . $e->getMessage();
 }
+?>
+<?php
+include(__DIR__ . "/includes/header.php");
+include(__DIR__ . "/includes/navigatie.php");
 ?>
 <h2>Overzicht personeelsleden</h2>
 

@@ -1,8 +1,5 @@
 <?php
-session_start();
 require_once(__DIR__ . "/includes/db_connectie.php");
-include(__DIR__ . "/includes/navigatie.php");
-include(__DIR__ . "/includes/header.php");
 
 // Sessie starten als die nog niet actief is (al gedaan door session_start bovenaan, dus eigenlijk overbodig hier)
 if (session_status() === PHP_SESSION_NONE) {
@@ -58,8 +55,10 @@ try {
     die("Fout bij ophalen producten: " . $e->getMessage());
 }
 ?>
-<!-- css inladen -->
-
+<?php
+include(__DIR__ . "/includes/header.php");
+include(__DIR__ . "/includes/navigatie.php");
+?>
 <h2>Menu</h2>
 
 <?php if (!empty($message)): ?>
@@ -84,7 +83,7 @@ foreach ($producten as $product):
     <?php if (isset($ingredienten_per_product[$product['name']])): ?>
     <p style="margin: 5px 0; font-size: 0.9em;">
         <strong>Ingrediënten:</strong>
-        <?= htmlspecialchars(implode(", ", $ingredienten_per_product[$product['name']])) ?>
+        <?= implode(", ", array_map("htmlspecialchars", $ingredienten_per_product[$product['name']])) ?>
     </p>
 <?php endif; ?>
 

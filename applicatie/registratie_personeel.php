@@ -1,8 +1,7 @@
 <?php
 session_start();
 require_once(__DIR__ . "/includes/db_connectie.php");
-include(__DIR__ . "/includes/navigatie.php");
-include(__DIR__ . "/includes/header.php");
+
 
 // Alleen voor ingelogde beheerders
 if (!isset($_SESSION["username"]) || strtolower($_SESSION["role"]) !== "personnel") {
@@ -55,7 +54,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-
+<?php
+include(__DIR__ . "/includes/header.php");
+include(__DIR__ . "/includes/navigatie.php");
+?>
 <!-- Form voor het registreren van personeel -->
 <h2>Personeelslid registreren</h2>
 

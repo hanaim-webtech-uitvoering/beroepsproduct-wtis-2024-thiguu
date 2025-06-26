@@ -1,8 +1,7 @@
 <?php
 session_start();
 require_once(__DIR__ . "/includes/db_connectie.php");
-include(__DIR__ . "/includes/navigatie.php");
-include(__DIR__ . "/includes/header.php");
+
 if (!isset($_SESSION["username"]) || strtolower($_SESSION["role"]) !== "personnel") {
     header("Location: login.php");
     exit();
@@ -61,7 +60,10 @@ try {
     die("Fout bij ophalen bestellingen: " . $e->getMessage());
 }
 ?>
-
+<?php
+include(__DIR__ . "/includes/header.php");
+include(__DIR__ . "/includes/navigatie.php");
+?>
 <h2>Bestellingsoverzicht voor personeel</h2>
 
 <?php if ($melding): ?>
