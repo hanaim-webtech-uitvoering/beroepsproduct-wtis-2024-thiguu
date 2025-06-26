@@ -1,7 +1,9 @@
 <?php
 session_start();
-require_once("db_connectie.php");
-include("navigatie.php");
+require_once(__DIR__ . "/includes/db_connectie.php");
+include(__DIR__ . "/includes/navigatie.php");
+include(__DIR__ . "/includes/header.php");
+
 if (!isset($_SESSION["username"]) || strtolower($_SESSION["role"]) !== "client") {
     header("Location: login.php");
     exit();

@@ -1,7 +1,7 @@
 <?php
-require_once("db_connectie.php");
-include("navigatie.php");
-include("header.php");
+require_once(__DIR__ . "/includes/db_connectie.php");
+include(__DIR__ . "/includes/navigatie.php");
+include(__DIR__ . "/includes/header.php");
 $error = "";
 // Aanmaken variabele form
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

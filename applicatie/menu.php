@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once("db_connectie.php");
-include("navigatie.php");
-include("header.php");
+require_once(__DIR__ . "/includes/db_connectie.php");
+include(__DIR__ . "/includes/navigatie.php");
+include(__DIR__ . "/includes/header.php");
 
 // Sessie starten als die nog niet actief is (al gedaan door session_start bovenaan, dus eigenlijk overbodig hier)
 if (session_status() === PHP_SESSION_NONE) {

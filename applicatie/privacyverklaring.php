@@ -1,6 +1,6 @@
 <?php
-include("navigatie.php");
-include("header.php");
+include(__DIR__ . "/includes/navigatie.php");
+include(__DIR__ . "/includes/header.php");
 ?>
 
 <h2>Privacyverklaring Pizzeria Sole Machina</h2>
